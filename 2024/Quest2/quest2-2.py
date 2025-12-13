@@ -2,13 +2,8 @@
 # https://everybody.codes/event/2024/quests/2
 from time import perf_counter
 
-if __name__ == "__main__":
-    start_time = perf_counter()
-    data = open(0).read().strip().splitlines()
 
-    runes = data[0].split(":")[1].split(",")
-    inscriptions = data[2:]
-
+def count_runes(runes, inscriptions):
     # Build complete set of patterns (runes + reverses)
     patterns = set()
 
@@ -33,10 +28,19 @@ if __name__ == "__main__":
                 # Move start position to just after current match to find overlapping patterns
                 start = pos + 1
 
-    p1 = len(symbols)
+    return len(symbols)
 
-    print("\033[1mPart1:\033[22m", p1)
-    print("\033[1mPart2:\033[22m", "p2")
+
+if __name__ == "__main__":
+    start_time = perf_counter()
+    data = open(0).read().strip().splitlines()
+
+    runes = data[0].split(":")[1].split(",")
+    inscriptions = data[2:]
+
+    ans = count_runes(runes, inscriptions)
+
+    print("\033[1mAnswer:\033[22m", ans)
 
     end_time = perf_counter()
     print(f"\033[2mTime: {end_time - start_time:.4f}s\033[22m")

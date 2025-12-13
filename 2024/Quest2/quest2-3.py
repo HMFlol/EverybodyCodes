@@ -2,13 +2,8 @@
 # https://everybody.codes/event/2024/quests/2
 from time import perf_counter
 
-if __name__ == "__main__":
-    start_time = perf_counter()
-    data = open(0).read().strip().splitlines()
 
-    runes = data[0].split(":")[1].split(",")
-    inscriptions = data[2:]
-
+def count_runes(runes, inscriptions):
     # Build complete set of patterns (runes + reverses)
     patterns = set()
 
@@ -19,8 +14,6 @@ if __name__ == "__main__":
             patterns.add(rev_rune)
 
     symbols = set()
-    # Get max pattern length once
-    max_pattern_len = max(len(p) for p in patterns)
     # Horizontal search with wrap around
     for index, inscription in enumerate(inscriptions):
         for pattern in patterns:
@@ -38,10 +31,9 @@ if __name__ == "__main__":
                     symbols.add((index, original_pos))
                 # Move start position to just after current match to find overlapping patterns
                 start = pos + 1
-
     # Rotate the inscriptions 90 degrees for vertical search
     v_inscriptions = ["".join(col) for col in zip(*inscriptions)]
-
+    # Vertical search using flipped inscriptions
     for v_index, v_inscription in enumerate(v_inscriptions):
         for pattern in patterns:
             start = 0
@@ -52,14 +44,19 @@ if __name__ == "__main__":
                     symbols.add((pos + i, v_index))
                 start = pos + 1
 
-    # Debug: show all positions
-    print(f"All positions: {sorted(symbols)}")
-    print(f"Total: {len(symbols)}")
+    return len(symbols)
 
-    p1 = len(symbols)
 
-    print("\033[1mPart1:\033[22m", p1)
-    print("\033[1mPart2:\033[22m", "p2")
+if __name__ == "__main__":
+    start_time = perf_counter()
+    data = open(0).read().strip().splitlines()
+
+    runes = data[0].split(":")[1].split(",")
+    inscriptions = data[2:]
+
+    ans = count_runes(runes, inscriptions)
+
+    print("\033[1mAnswer:\033[22m", ans)
 
     end_time = perf_counter()
     print(f"\033[2mTime: {end_time - start_time:.4f}s\033[22m")
