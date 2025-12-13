@@ -1,4 +1,4 @@
-# Solution for Everybody Codes 2024, Quest 1, part 1
+# Solution for Everybody Codes 2024, Quest 1, part 2
 # https://everybody.codes/event/2024/quests/1
 from time import perf_counter
 
