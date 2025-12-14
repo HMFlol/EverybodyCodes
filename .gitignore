@@ -1,2 +1,45 @@
+# Ignore all quest solution files by default
+# Uncomment specific files below to track them in git
+2024/Quest4
+2024/Quest5
+2024/Quest6
+2024/Quest7
+2024/Quest8
+2024/Quest9
+2024/Quest10
+2024/Quest11
+2024/Quest12
+2024/Quest13
+2024/Quest14
+2024/Quest15
+2024/Quest16
+2024/Quest17
+2024/Quest18
+2024/Quest19
+2024/Quest20
+2025/Quest1
+2025/Quest2
+2025/Quest3
+2025/Quest4
+2025/Quest5
+2025/Quest6
+2025/Quest7
+2025/Quest8
+2025/Quest9
+2025/Quest10
+2025/Quest11
+2025/Quest12
+2025/Quest13
+2025/Quest14
+2025/Quest15
+2025/Quest16
+2025/Quest17
+2025/Quest18
+2025/Quest19
+2025/Quest20
+
+
+
+# Ignore input and test files
 input*.txt
 test*.txt
